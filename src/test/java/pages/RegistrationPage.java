@@ -22,8 +22,9 @@ public class RegistrationPage {
             hobbiesInput = $("#hobbiesWrapper"),
             uploadFile = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
-            addState = $("#react-select-3-input"),
-            addCity =$("#react-select-4-input"),
+            wrapperStateCity = $("#stateCity-wrapper"),
+            addState = $("#state"),
+            addCity =$("#city"),
             addSubmit =$("#submit"),
             seeModalWindow =$(".modal-dialog"),
             closeModalWindow =$("#closeLargeModal"),
@@ -85,7 +86,7 @@ public class RegistrationPage {
        return this;
    }
    public RegistrationPage setImage(String imageName){
-        uploadFile.uploadFile(new File(imageName));
+        uploadFile.uploadFromClasspath(imageName);
     return this;
    }
    public RegistrationPage setCurrAddress(String curAddress){
@@ -93,8 +94,11 @@ public class RegistrationPage {
         return this;
    }
    public RegistrationPage setStateCity(String state, String city){
-        addState.setValue(state).pressEnter();
-        addCity.setValue(city).pressEnter();
+       addState.click();
+       wrapperStateCity.$(byText(state)).click();
+       addCity.click();
+       wrapperStateCity.$(byText(city)).click();
+
         return this;
    }
    public RegistrationPage clickSubmit(){

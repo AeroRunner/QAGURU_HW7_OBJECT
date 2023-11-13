@@ -1,10 +1,9 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.OpenConfigsForTests;
 import pages.TextBox;
 
-public class TextBoxObjectForTests extends OpenConfigsForTests {
+public class TextBoxObjectForTests extends BaseTest {
     TextBox textbox = new TextBox();
     @Test
     void trueTextBoxtest(){
