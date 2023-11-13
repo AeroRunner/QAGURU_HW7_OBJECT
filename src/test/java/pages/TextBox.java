@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -14,8 +13,8 @@ public class TextBox {
     emailBox = $("#userEmail"),
     addressBox = $("#currentAddress"),
     premantAddressBox = $("#permanentAddress"),
-    pressSubmitBox = $ ("#submit"),
-    resultBox = $("#output");
+    pressSubmitBox = $ ("#submit");
+
 
     public TextBox openBoxPage(){
      open("/text-box");
@@ -45,12 +44,4 @@ public class TextBox {
         pressSubmitBox.click();
         return this;
     }
-    public TextBox checkResultBox(String paragraph, String value){
-        resultBox.$(byText(paragraph)).parent()
-                .shouldHave(text(value));
-        return this;
-    }
-
-
-
 }

@@ -2,12 +2,6 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-import tests.UserData;
-
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -29,16 +23,12 @@ public class RegistrationPage {
             addCity =$("#city"),
             addSubmit =$("#submit");
 
-
-
-
     CalendarComponent calendarComponent = new CalendarComponent();
     public RegistrationPage removeBanner() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
-
     public RegistrationPage openFormPage() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
@@ -78,7 +68,7 @@ public class RegistrationPage {
         return this;
     }
    public RegistrationPage setSubj(String subj1, String subj2, String subj3){
-        subjInput.setValue(subj1).pressEnter();
+       subjInput.setValue(subj1).pressEnter();
        subjInput.setValue(subj2).pressEnter();
        subjInput.setValue(subj3).pressEnter();
 
@@ -110,6 +100,4 @@ public class RegistrationPage {
         addSubmit.click();
         return this;
    }
-
-
 }

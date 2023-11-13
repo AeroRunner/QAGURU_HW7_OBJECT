@@ -8,12 +8,6 @@ public class RegistrPageObjectForTests extends BaseTest {
         RegistrationPage registrationPage = new RegistrationPage();
         TCheck tCheck = new TCheck();
         UserData userData = new UserData();
-        private String fullName = userData.name+" "+userData.lastName;
-        private String bornDate = userData.birthDay+" "+userData.birthMonth+","+userData.birthYear;
-        private String subjects = userData.arts+", "+userData.math+", "+userData.physics;
-        private String hobbies = userData.sports+", "+userData.reading+", "+ userData.music;
-        String stateAndCity = userData.state+" "+ userData.city;
-
         @Test
         void trueFullFormTest() {
             registrationPage.openFormPage()
@@ -32,20 +26,18 @@ public class RegistrPageObjectForTests extends BaseTest {
                     .clickSubmit();
 
             tCheck.modalSee();
-            tCheck.resultCheck(tCheck.graphName, fullName)
+            tCheck.resultCheck(tCheck.graphName, tCheck.fullName)
                     .resultCheck(tCheck.graphEmail, userData.email)
                     .resultCheck(tCheck.graphGender, userData.gender)
                     .resultCheck(tCheck.graphMobile, userData.number)
-                    .resultCheck(tCheck.graphBorn, bornDate)
-                    .resultCheck(tCheck.graphSubj, subjects)
-                    .resultCheck(tCheck.graphHobbies, hobbies)
+                    .resultCheck(tCheck.graphBorn, tCheck.bornDate)
+                    .resultCheck(tCheck.graphSubj, tCheck.subjects)
+                    .resultCheck(tCheck.graphHobbies, tCheck.hobbies)
                     .resultCheck(tCheck.graphPicture, userData.testImg)
                     .resultCheck(tCheck.graphAddress, userData.currAddress)
-                    .resultCheck(tCheck.graphStateCity, stateAndCity);
+                    .resultCheck(tCheck.graphStateCity,tCheck.stateAndCity );
             tCheck.modalClose();
         }
-
-
         @Test
         void easyTrueFormTest(){
               registrationPage.openFormPage()
@@ -57,12 +49,11 @@ public class RegistrPageObjectForTests extends BaseTest {
                     .setUserNumber(userData.number)
                     .clickSubmit();
               tCheck.modalSee();
-              tCheck.resultCheck(tCheck.graphName,fullName )
+              tCheck.resultCheck(tCheck.graphName,tCheck.fullName )
                      .resultCheck(tCheck.graphEmail, userData.email)
                      .resultCheck(tCheck.graphGender, userData.gender)
                      .resultCheck(tCheck.graphMobile, userData.number);
               tCheck.modalClose();
-
         }
         @Test
         void easyFallFormtest(){
@@ -71,7 +62,6 @@ public class RegistrPageObjectForTests extends BaseTest {
                    .openFormPage()
                    .setFirstName(userData.name)
                    .clickSubmit();
-
         }
     }
 
