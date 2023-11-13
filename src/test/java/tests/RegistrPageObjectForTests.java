@@ -2,68 +2,76 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.components.ResultModalComponent;
+import pages.components.TCheck;
 
 public class RegistrPageObjectForTests extends BaseTest {
         RegistrationPage registrationPage = new RegistrationPage();
-        ResultModalComponent resultModalComponent = new ResultModalComponent();
+        TCheck tCheck = new TCheck();
         UserData userData = new UserData();
-    String [] paramName= {"Student Name", "Student Email", "Gender", "Mobile",
-            "Date of Birth", "Subjects", "Hobbies", "Picture", "Address", "State and City"};
-    String [] expected = {userData.name + " " + "Elizarov", "airplay1x6@gmail.com", "Male", "8888888888",
-            "29"+" "+"December"+","+"1999", String.join(", ","Maths, Physics, Commerce"),
-            String.join(", ", "Sports","Reading","Music"), "testimage.png", "Krajishka 87", "Uttar Pradesh" + " " + "Agra"};
+        private String fullName = userData.name+" "+userData.lastName;
+        private String bornDate = userData.birthDay+" "+userData.birthMonth+","+userData.birthYear;
+        private String subjects = userData.arts+", "+userData.math+", "+userData.physics;
+        private String hobbies = userData.sports+", "+userData.reading+", "+ userData.music;
+        String stateAndCity = userData.state+" "+ userData.city;
+
         @Test
         void trueFullFormTest() {
             registrationPage.openFormPage()
+                    .removeBanner()
                     .setFirstName(userData.name)
-                    .setLastName("Elizarov")
-                    .setEmail("airplay1x6@gmail.com")
-                    .setGender("Male")
-                    .setUserNumber("8888888888")
-                    .setDateOfBirth("29", "December", "1999")
-                    .setSubj("Maths","Physics","Commerce")
-                    .setHobbies("Sports","Reading","Music")
-                    .setImage("testimage.png")
-                    .setCurrAddress("Krajishka 87")
-                    .setStateCity("Uttar Pradesh","Agra")
-                    .clickSubmit()
-                    .modalSee();
-            resultModalComponent.checkResult(paramName, expected);
-//                    .checkModalResul("Student Name","Dmitrii Elizarov")
-//                    .checkModalResul("Student Email","airplay1x6@gmail.com")
-//                    .checkModalResul("Gender","Male")
-//                    .checkModalResul("Mobile","8888888888")
-//                    .checkModalResul("Date of Birth","15 December,1999")
-//                    .checkModalResul("Subjects","Maths, Physics, Commerce")
-//                    .checkModalResul("Hobbies","Sports, Reading, Music")
-//                    .checkModalResul("Picture","testimage.png")
-//                    .checkModalResul("Address","Krajishka 87")
-//                    .checkModalResul("State and City","Uttar Pradesh Agra")
+                    .setLastName(userData.lastName)
+                    .setEmail(userData.email)
+                    .setGender(userData.gender)
+                    .setUserNumber(userData.number)
+                    .setDateOfBirth(userData.birthDay, userData.birthMonth, userData.birthYear)
+                    .setSubj(userData.arts, userData.math, userData.physics)
+                    .setHobbies(userData.sports, userData.reading, userData.music)
+                    .setImage(userData.testImg)
+                    .setCurrAddress(userData.currAddress)
+                    .setStateCity(userData.state, userData.city)
+                    .clickSubmit();
 
+            tCheck.modalSee();
+            tCheck.resultCheck(tCheck.graphName, fullName)
+                    .resultCheck(tCheck.graphEmail, userData.email)
+                    .resultCheck(tCheck.graphGender, userData.gender)
+                    .resultCheck(tCheck.graphMobile, userData.number)
+                    .resultCheck(tCheck.graphBorn, bornDate)
+                    .resultCheck(tCheck.graphSubj, subjects)
+                    .resultCheck(tCheck.graphHobbies, hobbies)
+                    .resultCheck(tCheck.graphPicture, userData.testImg)
+                    .resultCheck(tCheck.graphAddress, userData.currAddress)
+                    .resultCheck(tCheck.graphStateCity, stateAndCity);
+            tCheck.modalClose();
         }
+
+
         @Test
         void easyTrueFormTest(){
               registrationPage.openFormPage()
-                    .setFirstName("Kate")
-                    .setLastName("Wick")
-                    .setEmail("katew@gmail.com")
-                    .setGender("Other")
-                    .setUserNumber("0123456789")
-                    .clickSubmit()
-                    .checkModalResul("Student Name","Kate Wick")
-                    .checkModalResul("Student Email","katew@gmail.com")
-                    .checkModalResul("Gender","Other")
-                    .checkModalResul("Mobile","0123456789")
-                    .modalClose();
+                    .removeBanner()
+                    .setFirstName(userData.name)
+                    .setLastName(userData.lastName)
+                    .setEmail(userData.email)
+                    .setGender(userData.gender)
+                    .setUserNumber(userData.number)
+                    .clickSubmit();
+              tCheck.modalSee();
+              tCheck.resultCheck(tCheck.graphName,fullName )
+                     .resultCheck(tCheck.graphEmail, userData.email)
+                     .resultCheck(tCheck.graphGender, userData.gender)
+                     .resultCheck(tCheck.graphMobile, userData.number);
+              tCheck.modalClose();
 
         }
         @Test
         void easyFallFormtest(){
-           registrationPage.openFormPage()
-                   .setFirstName("Arkadiy")
-                   .clickSubmit()
-                   .modalSee();
+           registrationPage
+                   .removeBanner()
+                   .openFormPage()
+                   .setFirstName(userData.name)
+                   .clickSubmit();
+
         }
     }
 
