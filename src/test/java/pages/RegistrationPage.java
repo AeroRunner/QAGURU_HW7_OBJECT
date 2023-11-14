@@ -67,17 +67,12 @@ public class RegistrationPage {
 
         return this;
     }
-   public RegistrationPage setSubj(String subj1, String subj2, String subj3){
+   public RegistrationPage setSubj(String subj1){
        subjInput.setValue(subj1).pressEnter();
-       subjInput.setValue(subj2).pressEnter();
-       subjInput.setValue(subj3).pressEnter();
-
        return this;
    }
-   public RegistrationPage setHobbies(String hobbie1, String hobbie2, String hobbie3){
+   public RegistrationPage setHobbies(String hobbie1){
         hobbiesInput.$(byText(hobbie1)).click();
-        hobbiesInput.$(byText(hobbie2)).click();
-        hobbiesInput.$(byText(hobbie3)).click();
        return this;
    }
    public RegistrationPage setImage(String imageName){
@@ -93,7 +88,6 @@ public class RegistrationPage {
        wrapperStateCity.$(byText(state)).click();
        addCity.click();
        wrapperStateCity.$(byText(city)).click();
-
         return this;
    }
    public RegistrationPage clickSubmit(){

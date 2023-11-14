@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import pages.TextBox;
 import pages.components.TCheck;
 
-public class TextBoxObjectForTests extends BaseTest {
+public class TextBoxTest extends BaseTest {
     TextBox textbox = new TextBox();
     UserData userData = new UserData();
     TCheck tCheck = new TCheck();
@@ -18,10 +18,10 @@ public class TextBoxObjectForTests extends BaseTest {
                 .getPremAddressBox(userData.boxPremAddress)
                 .submitBoxClick();
 
-                tCheck.BoxResult(tCheck.boxCheckName, userData.boxFullName)
-                .BoxResult(tCheck.boxCheckEmail, userData.boxEmail)
-                .BoxResult(tCheck.boxCheckAddress, userData.boxAdress)
-                .BoxResult(tCheck.boxCheckPerAddress, userData.boxPremAddress);
+                tCheck.BoxResult(tCheck.boxName, userData.boxFullName)
+                .BoxResult(tCheck.boxEmail, userData.boxEmail)
+                .BoxResult(tCheck.boxAddress, userData.boxAdress)
+                .BoxResult(tCheck.boxPerAddress, userData.boxPremAddress);
 
     }
 }

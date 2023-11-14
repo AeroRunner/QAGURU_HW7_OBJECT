@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.TCheck;
 
-public class RegistrPageObjectForTests extends BaseTest {
+public class RegistrPageTest extends BaseTest {
         RegistrationPage registrationPage = new RegistrationPage();
         TCheck tCheck = new TCheck();
         UserData userData = new UserData();
@@ -18,8 +18,8 @@ public class RegistrPageObjectForTests extends BaseTest {
                     .setGender(userData.gender)
                     .setUserNumber(userData.number)
                     .setDateOfBirth(userData.birthDay, userData.birthMonth, userData.birthYear)
-                    .setSubj(userData.arts, userData.math, userData.physics)
-                    .setHobbies(userData.sports, userData.reading, userData.music)
+                    .setSubj(userData.arts)
+                    .setHobbies(userData.sports)
                     .setImage(userData.testImg)
                     .setCurrAddress(userData.currAddress)
                     .setStateCity(userData.state, userData.city)
@@ -31,8 +31,8 @@ public class RegistrPageObjectForTests extends BaseTest {
                     .resultCheck(tCheck.graphGender, userData.gender)
                     .resultCheck(tCheck.graphMobile, userData.number)
                     .resultCheck(tCheck.graphBorn, tCheck.bornDate)
-                    .resultCheck(tCheck.graphSubj, tCheck.subjects)
-                    .resultCheck(tCheck.graphHobbies, tCheck.hobbies)
+                    .resultCheck(tCheck.graphSubj, userData.arts)
+                    .resultCheck(tCheck.graphHobbies, userData.sports)
                     .resultCheck(tCheck.graphPicture, userData.testImg)
                     .resultCheck(tCheck.graphAddress, userData.currAddress)
                     .resultCheck(tCheck.graphStateCity,tCheck.stateAndCity );
