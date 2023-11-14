@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class TCheck {
+public class Results {
 
     //For DEMOQA Automation Practice Form
 
@@ -34,16 +34,16 @@ public class TCheck {
     public String stateAndCity = userData.state+" "+ userData.city;
 
 
-    public TCheck modalSee(){
+    public Results modalSee(){
         seeModalWindow.should(appear);
 
         return this;
     }
-    public TCheck modalClose(){
+    public Results modalClose(){
         closeModalWindow.click();
         return this;
     }
-    public TCheck resultCheck(String paragraph, String text1) {
+    public Results resultCheck(String paragraph, String text1) {
         tableParagraph.$(byText(paragraph)).parent().shouldHave(text(text1));
         return this;
     }
@@ -55,7 +55,7 @@ public class TCheck {
     public String boxEmail ="Email:";
     public String boxAddress = "Current Address :";
     public String boxPerAddress = "Permananet Address :";
-    public TCheck BoxResult(String paragraph, String value){
+    public Results BoxResult(String paragraph, String value){
         resultBox.$(byText(paragraph)).parent()
                 .shouldHave(text(value));
         return this;

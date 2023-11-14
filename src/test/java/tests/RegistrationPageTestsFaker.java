@@ -2,13 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.components.TCheck;
+import pages.components.Results;
 import utils.FakeData;
 
 public class RegistrationPageTestsFaker extends BaseTest {
     FakeData fakeData = new FakeData();
     RegistrationPage registrationPage = new RegistrationPage();
-    TCheck tCheck = new TCheck();
+    Results results = new Results();
     UserData userData = new UserData();
     @Test
     void trueFullFormTest() {
@@ -27,23 +27,23 @@ public class RegistrationPageTestsFaker extends BaseTest {
                 .setStateCity(fakeData.state, fakeData.city)
                 .clickSubmit();
 
-        tCheck.modalSee();
-        tCheck.resultCheck(tCheck.graphName, fakeData.firstName )
-               .resultCheck(tCheck.graphName, fakeData.lastName)
-               .resultCheck(tCheck.graphEmail, fakeData.email)
-               .resultCheck(tCheck.graphGender, fakeData.gender)
-               .resultCheck(tCheck.graphMobile, fakeData.phoneNumber)
-               .resultCheck(tCheck.graphBorn, fakeData.day)
-               .resultCheck(tCheck.graphBorn, fakeData.month)
-               .resultCheck(tCheck.graphBorn, fakeData.year)
-               .resultCheck(tCheck.graphSubj, fakeData.subject)
-               .resultCheck(tCheck.graphSubj, fakeData.subject)
-               .resultCheck(tCheck.graphHobbies, fakeData.hobbie)
-               .resultCheck(tCheck.graphPicture, userData.testImg)
-               .resultCheck(tCheck.graphAddress, fakeData.currentAddress)
-               .resultCheck(tCheck.graphStateCity, fakeData.state )
-               .resultCheck(tCheck.graphStateCity, fakeData.city);
-        tCheck.modalClose();
+        results.modalSee();
+        results.resultCheck(results.graphName, fakeData.firstName )
+               .resultCheck(results.graphName, fakeData.lastName)
+               .resultCheck(results.graphEmail, fakeData.email)
+               .resultCheck(results.graphGender, fakeData.gender)
+               .resultCheck(results.graphMobile, fakeData.phoneNumber)
+               .resultCheck(results.graphBorn, fakeData.day)
+               .resultCheck(results.graphBorn, fakeData.month)
+               .resultCheck(results.graphBorn, fakeData.year)
+               .resultCheck(results.graphSubj, fakeData.subject)
+               .resultCheck(results.graphSubj, fakeData.subject)
+               .resultCheck(results.graphHobbies, fakeData.hobbie)
+               .resultCheck(results.graphPicture, userData.testImg)
+               .resultCheck(results.graphAddress, fakeData.currentAddress)
+               .resultCheck(results.graphStateCity, fakeData.state )
+               .resultCheck(results.graphStateCity, fakeData.city);
+        results.modalClose();
     }
     @Test
     void easyTrueFormTest(){
@@ -55,12 +55,12 @@ public class RegistrationPageTestsFaker extends BaseTest {
                 .setGender(userData.gender)
                 .setUserNumber(userData.number)
                 .clickSubmit();
-        tCheck.modalSee();
-        tCheck.resultCheck(tCheck.graphName,tCheck.fullName )
-                .resultCheck(tCheck.graphEmail, userData.email)
-                .resultCheck(tCheck.graphGender, userData.gender)
-                .resultCheck(tCheck.graphMobile, userData.number);
-        tCheck.modalClose();
+        results.modalSee();
+        results.resultCheck(results.graphName, results.fullName )
+                .resultCheck(results.graphEmail, userData.email)
+                .resultCheck(results.graphGender, userData.gender)
+                .resultCheck(results.graphMobile, userData.number);
+        results.modalClose();
     }
     @Test
     void easyFallFormtest(){

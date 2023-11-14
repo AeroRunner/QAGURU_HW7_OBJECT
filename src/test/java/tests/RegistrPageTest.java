@@ -2,11 +2,11 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.components.TCheck;
+import pages.components.Results;
 
 public class RegistrPageTest extends BaseTest {
         RegistrationPage registrationPage = new RegistrationPage();
-        TCheck tCheck = new TCheck();
+        Results results = new Results();
         UserData userData = new UserData();
         @Test
         void trueFullFormTest() {
@@ -25,18 +25,18 @@ public class RegistrPageTest extends BaseTest {
                     .setStateCity(userData.state, userData.city)
                     .clickSubmit();
 
-            tCheck.modalSee();
-            tCheck.resultCheck(tCheck.graphName, tCheck.fullName)
-                    .resultCheck(tCheck.graphEmail, userData.email)
-                    .resultCheck(tCheck.graphGender, userData.gender)
-                    .resultCheck(tCheck.graphMobile, userData.number)
-                    .resultCheck(tCheck.graphBorn, tCheck.bornDate)
-                    .resultCheck(tCheck.graphSubj, userData.arts)
-                    .resultCheck(tCheck.graphHobbies, userData.sports)
-                    .resultCheck(tCheck.graphPicture, userData.testImg)
-                    .resultCheck(tCheck.graphAddress, userData.currAddress)
-                    .resultCheck(tCheck.graphStateCity,tCheck.stateAndCity );
-            tCheck.modalClose();
+            results.modalSee();
+            results.resultCheck(results.graphName, results.fullName)
+                    .resultCheck(results.graphEmail, userData.email)
+                    .resultCheck(results.graphGender, userData.gender)
+                    .resultCheck(results.graphMobile, userData.number)
+                    .resultCheck(results.graphBorn, results.bornDate)
+                    .resultCheck(results.graphSubj, userData.arts)
+                    .resultCheck(results.graphHobbies, userData.sports)
+                    .resultCheck(results.graphPicture, userData.testImg)
+                    .resultCheck(results.graphAddress, userData.currAddress)
+                    .resultCheck(results.graphStateCity, results.stateAndCity );
+            results.modalClose();
         }
         @Test
         void easyTrueFormTest(){
@@ -48,12 +48,12 @@ public class RegistrPageTest extends BaseTest {
                     .setGender(userData.gender)
                     .setUserNumber(userData.number)
                     .clickSubmit();
-              tCheck.modalSee();
-              tCheck.resultCheck(tCheck.graphName,tCheck.fullName )
-                     .resultCheck(tCheck.graphEmail, userData.email)
-                     .resultCheck(tCheck.graphGender, userData.gender)
-                     .resultCheck(tCheck.graphMobile, userData.number);
-              tCheck.modalClose();
+              results.modalSee();
+              results.resultCheck(results.graphName, results.fullName )
+                     .resultCheck(results.graphEmail, userData.email)
+                     .resultCheck(results.graphGender, userData.gender)
+                     .resultCheck(results.graphMobile, userData.number);
+              results.modalClose();
         }
         @Test
         void easyFallFormtest(){
