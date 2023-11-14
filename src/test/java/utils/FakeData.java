@@ -7,6 +7,7 @@ import java.util.Locale;
 public class FakeData {
     private final Faker fake = new Faker(new Locale("Ru"));
     private final Faker fakeEN = new Faker(new Locale("En"));
+
     // FOR DEMOQA Automation Practice Form
     public String
             firstName = fake.name().firstName(),
