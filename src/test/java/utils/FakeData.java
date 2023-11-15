@@ -12,7 +12,6 @@ public class FakeData {
     public String
             firstName = fake.name().firstName(),
             lastName= fake.name().lastName(),
-            fullName =fake.name().fullName(),
             email = fakeEN.internet().emailAddress(),
             gender = fake.options().option("Male", "Female", "Other"),
             phoneNumber = fake.phoneNumber().subscriberNumber(10),
@@ -31,11 +30,11 @@ public class FakeData {
                     "December"),
             day= String.format("%02d", fake.number().numberBetween(1, 28)),
             subject = fake.options().option("Physics", "Maths", "Commerce"),
-            hobbie = fake.options().option("Sports", "Reading", "Music"),
+            hobby = fake.options().option("Sports", "Reading", "Music"),
             currentAddress = fake.address().fullAddress(),
             state = fake.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
-            city = randomCity(state),
-            perAddress= fake.address().fullAddress();
+            city = randomCity(state);
+
     public static String randomCity(String state) {
         Faker faker = new Faker();
         switch (state) {case "Rajasthan":

@@ -2,12 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.TextBox;
-import pages.components.Results;
+import pages.UserData;
+import pages.components.OutputComponent;
 
 public class TextBoxTest extends BaseTest {
     TextBox textbox = new TextBox();
     UserData userData = new UserData();
-    Results results = new Results();
+    OutputComponent outputComponent = new OutputComponent();
     @Test
     void trueTextBoxtest(){
         textbox.openBoxPage()
@@ -18,10 +19,10 @@ public class TextBoxTest extends BaseTest {
                 .getPremAddressBox(userData.boxPremAddress)
                 .submitBoxClick();
 
-                results.BoxResult(results.boxName, userData.boxFullName)
-                .BoxResult(results.boxEmail, userData.boxEmail)
-                .BoxResult(results.boxAddress, userData.boxAdress)
-                .BoxResult(results.boxPerAddress, userData.boxPremAddress);
+                outputComponent.checkResult(outputComponent.boxName, userData.boxFullName)
+                .checkResult(outputComponent.boxEmail, userData.boxEmail)
+                .checkResult(outputComponent.boxAddress, userData.boxAdress)
+                .checkResult(outputComponent.boxPerAddress, userData.boxPremAddress);
 
     }
 }

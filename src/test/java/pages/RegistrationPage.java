@@ -2,6 +2,8 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+
+import static com.codeborne.selenide.Condition.hidden;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -15,13 +17,14 @@ public class RegistrationPage {
             userNumberInput = $("#userNumber"),
             calendarInput = $("#dateOfBirthInput"),
             subjInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbiesWrapper"),
+            hobbyInput = $("#hobbiesWrapper"),
             uploadFile = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
             wrapperStateCity = $("#stateCity-wrapper"),
             addState = $("#state"),
             addCity =$("#city"),
-            addSubmit =$("#submit");
+            addSubmit =$("#submit"),
+            tableClass = $(".table-responsive");
 
     CalendarComponent calendarComponent = new CalendarComponent();
     public RegistrationPage removeBanner() {
@@ -51,7 +54,7 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage setGender(String value) {
+    public RegistrationPage choiceGender(String value) {
         genderWrapper.$(byText(value)).click();
 
         return this;
@@ -61,7 +64,7 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage setDateOfBirth(String day, String month, String year) {
+    public RegistrationPage choiceDateOfBirth(String day, String month, String year) {
         calendarInput.click();
         calendarComponent.setDate(day,month,year);
 
@@ -71,11 +74,11 @@ public class RegistrationPage {
        subjInput.setValue(subj1).pressEnter();
        return this;
    }
-   public RegistrationPage setHobbies(String hobbie1){
-        hobbiesInput.$(byText(hobbie1)).click();
+   public RegistrationPage choiceHobby(String hobby1){
+        hobbyInput.$(byText(hobby1)).click();
        return this;
    }
-   public RegistrationPage setImage(String imageName){
+   public RegistrationPage uploadImage(String imageName){
         uploadFile.uploadFromClasspath(imageName);
     return this;
    }
@@ -83,7 +86,7 @@ public class RegistrationPage {
         addressInput.setValue(curAddress);
         return this;
    }
-   public RegistrationPage setStateCity(String state, String city){
+   public RegistrationPage choiceStateCity(String state, String city){
        addState.click();
        wrapperStateCity.$(byText(state)).click();
        addCity.click();
@@ -92,6 +95,10 @@ public class RegistrationPage {
    }
    public RegistrationPage clickSubmit(){
         addSubmit.click();
+        return this;
+   }
+   public RegistrationPage checkTableHidden() {
+        tableClass.shouldBe(hidden);
         return this;
    }
 }

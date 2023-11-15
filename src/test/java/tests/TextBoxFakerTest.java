@@ -2,12 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.TextBox;
-import pages.components.Results;
+import pages.components.OutputComponent;
+import pages.components.ResultModal;
 import utils.FakeData;
 
-public class TextBoxFaker extends BaseTest {
+public class TextBoxFakerTest extends BaseTest {
     TextBox textbox = new TextBox();
-    Results results = new Results();
+    OutputComponent resultBox = new OutputComponent();
     FakeData fake = new FakeData();
     @Test
     void trueTextBoxtest(){
@@ -19,10 +20,10 @@ public class TextBoxFaker extends BaseTest {
                 .getPremAddressBox(fake.permAdressCity)
                 .submitBoxClick();
 
-        results.BoxResult(results.boxName, fake.fullNameEN)
-                .BoxResult(results.boxEmail, fake.email)
-                .BoxResult(results.boxAddress, fake.adressEU)
-                .BoxResult(results.boxPerAddress, fake.permAdressCity);
+        resultBox.checkResult(resultBox.boxName, fake.fullNameEN)
+                .checkResult(resultBox.boxEmail, fake.email)
+                .checkResult(resultBox.boxAddress, fake.adressEU)
+                .checkResult(resultBox.boxPerAddress, fake.permAdressCity);
 
     }
 }
