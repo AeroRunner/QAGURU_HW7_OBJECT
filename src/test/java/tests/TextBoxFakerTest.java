@@ -1,11 +1,13 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.TextBox;
 import pages.components.OutputComponent;
-import pages.components.ResultModal;
 import utils.FakeData;
+
 @DisplayName("Class with Check Box tests via Java Faker")
 
 public class TextBoxFakerTest extends BaseTest {
@@ -15,6 +17,7 @@ public class TextBoxFakerTest extends BaseTest {
     @DisplayName("Filling and check box form with fake data")
     @Test
     void trueTextBoxtest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
         textbox.openBoxPage()
                 .boxPageCheck()
                 .setFullNameBox(fake.fullNameEN)

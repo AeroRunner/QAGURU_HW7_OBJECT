@@ -1,5 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -13,6 +15,7 @@ public class RegistrationPageTest extends BaseTest {
     @DisplayName("Filling out the form")
         @Test
         void trueFullFormTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
             registrationPage.openFormPage()
                     .removeBanner()
                     .setFirstName(userData.name)
@@ -43,6 +46,7 @@ public class RegistrationPageTest extends BaseTest {
     @DisplayName("Checking a form")
         @Test
         void easyTrueFormTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
               registrationPage.openFormPage()
                     .removeBanner()
                     .setFirstName(userData.name)
@@ -60,6 +64,7 @@ public class RegistrationPageTest extends BaseTest {
     @DisplayName("Negative test")
         @Test
         void easyFallFormtest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
            registrationPage.openFormPage()
                    .removeBanner()
                    .setFirstName(userData.name)

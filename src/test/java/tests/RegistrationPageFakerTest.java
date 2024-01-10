@@ -1,5 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -16,6 +18,7 @@ public class RegistrationPageFakerTest extends BaseTest {
     @Test
     @DisplayName("Filling out the form with fake data")
     void trueFullFormFakerTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage.openFormPage()
                 .removeBanner()
                 .setFirstName(fake.firstName)
@@ -46,6 +49,7 @@ public class RegistrationPageFakerTest extends BaseTest {
     @Test
     @DisplayName("Checking a form with fake data")
     void easyTrueFormFakerTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage.openFormPage()
                 .removeBanner()
                 .setFirstName(fake.firstName)
@@ -63,6 +67,7 @@ public class RegistrationPageFakerTest extends BaseTest {
     @Test
     @DisplayName("Negative test with fake data")
     void negativeFormFakerTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage
                 .openFormPage()
                 .removeBanner()

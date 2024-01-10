@@ -1,5 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.TextBox;
@@ -13,6 +15,7 @@ public class TextBoxTest extends BaseTest {
     @DisplayName("Filling and check box form")
     @Test
     void trueTextBoxtest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
         textbox.openBoxPage()
                 .boxPageCheck()
                 .setFullNameBox(userData.boxFullName)
