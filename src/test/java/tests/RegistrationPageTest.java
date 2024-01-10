@@ -1,14 +1,16 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.ResultModal;
 import pages.UserData;
-
+@DisplayName("Class with form tests")
 public class RegistrationPageTest extends BaseTest {
         RegistrationPage registrationPage = new RegistrationPage();
         ResultModal resultModal = new ResultModal();
         UserData userData = new UserData();
+    @DisplayName("Filling out the form")
         @Test
         void trueFullFormTest() {
             registrationPage.openFormPage()
@@ -38,6 +40,7 @@ public class RegistrationPageTest extends BaseTest {
                     .checkResult(resultModal.graphAddress, userData.currAddress)
                     .checkResult(resultModal.graphStateCity, resultModal.stateAndCity );
         }
+    @DisplayName("Checking a form")
         @Test
         void easyTrueFormTest(){
               registrationPage.openFormPage()
@@ -54,6 +57,7 @@ public class RegistrationPageTest extends BaseTest {
                      .checkResult(resultModal.graphGender, userData.gender)
                      .checkResult(resultModal.graphMobile, userData.number);
         }
+    @DisplayName("Negative test")
         @Test
         void easyFallFormtest(){
            registrationPage.openFormPage()

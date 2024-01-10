@@ -1,11 +1,12 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.ResultModal;
 import utils.FakeData;
 import pages.UserData;
-
+@DisplayName("Class with form tests via jAVA FAKER")
 public class RegistrationPageFakerTest extends BaseTest {
     FakeData fake = new FakeData();
     RegistrationPage registrationPage = new RegistrationPage();
@@ -13,6 +14,7 @@ public class RegistrationPageFakerTest extends BaseTest {
     UserData userData = new UserData();
 
     @Test
+    @DisplayName("Filling out the form with fake data")
     void trueFullFormFakerTest() {
         registrationPage.openFormPage()
                 .removeBanner()
@@ -42,6 +44,7 @@ public class RegistrationPageFakerTest extends BaseTest {
                 .checkResult(resultModal.graphStateCity, fake.state+" "+fake.city );
     }
     @Test
+    @DisplayName("Checking a form with fake data")
     void easyTrueFormFakerTest(){
         registrationPage.openFormPage()
                 .removeBanner()
@@ -58,6 +61,7 @@ public class RegistrationPageFakerTest extends BaseTest {
                 .checkResult(resultModal.graphMobile, fake.phoneNumber);
     }
     @Test
+    @DisplayName("Negative test with fake data")
     void negativeFormFakerTest(){
         registrationPage
                 .openFormPage()
